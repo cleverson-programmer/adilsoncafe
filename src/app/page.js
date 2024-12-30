@@ -221,7 +221,7 @@ export default function Home() {
             name="type"
             value={tipoProduto}
             onChange={(e) => setTipoProduto(e.target.value)}
-            className="block w-full border border-gray-300 rounded-lg px-3 py-2 mt-1"
+            className="block w-full bg-white border border-gray-300 rounded-lg px-3 py-2 mt-1"
           >
             <option value="">Selecione</option>
             <option value="Café seco">Café seco</option>
@@ -239,7 +239,7 @@ export default function Home() {
             placeholder="Digite o peso (KG)"
             value={novoPeso}
             onChange={(e) => setNovoPeso(e.target.value)}
-            className="w-full sm:flex-1 border border-gray-300 rounded-lg px-3 py-2"
+            className="w-full sm:flex-1 text-black border border-gray-300 rounded-lg px-3 py-2"
           />
           <button
             onClick={adicionarPeso}
@@ -271,7 +271,7 @@ export default function Home() {
                     peso
                   )}
                 </td>
-                <td className="border border-gray-300 px-4 py-2 space-x-2">
+                <td className="border text-black border-gray-300 px-4 py-2 space-x-2">
                   {editandoIndex === index ? (
                     <>
                       <button
