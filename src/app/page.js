@@ -212,8 +212,8 @@ export default function Home() {
         </fieldset>
 
         <fieldset>
-          <legend className="text-lg font-bold mb-2">Café:</legend>
-          <label htmlFor="type" className="block text-sm font-medium text-gray-700">
+          <legend className="text-lg font-bold text-black mb-2">Café:</legend>
+          <label htmlFor="type" className="block text-sm font-medium text-black">
             Tipo:
           </label>
           <select
@@ -232,14 +232,14 @@ export default function Home() {
       </form>
 
       <div className="bg-white shadow-md rounded-lg p-6 mt-6 max-w-4xl mx-auto">
-        <h2 className="text-2xl font-bold mb-4">Controle</h2>
+        <h2 className="text-2xl font-bold text-black mb-4">Controle</h2>
         <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0 mb-6">
           <input
             type="text"
             placeholder="Digite o peso (KG)"
             value={novoPeso}
             onChange={(e) => setNovoPeso(e.target.value)}
-            className="w-full sm:flex-1 border border-gray-300 rounded-lg px-3 py-2 placeholder-gray-500"
+            className="w-full sm:flex-1 border border-gray-300 rounded-lg px-3 py-2"
           />
           <button
             onClick={adicionarPeso}
@@ -249,23 +249,23 @@ export default function Home() {
           </button>
         </div>
 
-        <table className="table-auto w-full border-collapse border border-gray-300 text-left sm:text-black sm:bg-white">
+        <table className="table-auto w-full border-collapse border border-gray-300 text-left">
           <thead>
-            <tr className="bg-gray-100 sm:bg-white sm:text-black">
-              <th className="border border-gray-300 px-4 py-2">Peso (KG)</th>
-              <th className="border border-gray-300 px-4 py-2">Ações</th>
+            <tr className="bg-gray-100">
+              <th className="border border-gray-300 px-4 py-2 text-black">Peso (KG)</th>
+              <th className="border border-gray-300 px-4 py-2 text-black">Ações</th>
             </tr>
           </thead>
           <tbody>
             {pesos.map((peso, index) => (
-              <tr key={index} className="hover:bg-gray-50 sm:bg-white sm:text-black">
+              <tr key={index} className="hover:bg-gray-50">
                 <td className="border border-gray-300 px-4 py-2">
                   {editandoIndex === index ? (
                     <input
                       type="text"
                       value={editandoPeso}
                       onChange={(e) => setEditandoPeso(e.target.value)}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-1"
+                      className="w-full border text-black border-gray-300 rounded-lg px-3 py-1"
                     />
                   ) : (
                     peso
@@ -308,9 +308,9 @@ export default function Home() {
             ))}
           </tbody>
           <tfoot>
-            <tr className="bg-gray-100 sm:bg-white sm:text-black">
-              <td className="border border-gray-300 px-4 py-2 font-bold">Total (KG)</td>
-              <td className="border border-gray-300 px-4 py-2">{somaPesos.toFixed(2)}</td>
+            <tr className="bg-gray-100">
+              <td className="border border-gray-300 px-4 py-2 text-black font-bold">Total (KG)</td>
+              <td className="border border-gray-300 px-4 py-2 text-black">{somaPesos.toFixed(2)}</td>
             </tr>
           </tfoot>
         </table>
