@@ -239,7 +239,7 @@ export default function Home() {
             placeholder="Digite o peso (KG)"
             value={novoPeso}
             onChange={(e) => setNovoPeso(e.target.value)}
-            className="w-full sm:flex-1 text-black border border-gray-300 rounded-lg px-3 py-2"
+            className="w-full text-black sm:flex-1 border border-gray-300 rounded-lg px-3 py-2"
           />
           <button
             onClick={adicionarPeso}
@@ -259,7 +259,7 @@ export default function Home() {
           <tbody>
             {pesos.map((peso, index) => (
               <tr key={index}>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="border text-black border-gray-300 px-4 py-2">
                   {editandoIndex === index ? (
                     <input
                       type="text"
