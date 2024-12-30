@@ -40,8 +40,8 @@ export default function Home() {
     }
   };
 
-   // Excluir um peso
-   const excluirPeso = (index) => {
+  // Excluir um peso
+  const excluirPeso = (index) => {
     const novosPesos = pesos.filter((_, i) => i !== index);
     setPesos(novosPesos);
   };
@@ -61,40 +61,40 @@ export default function Home() {
     setEditandoIndex(null);
     setEditandoPeso("");
   };
-  
+
   // Ajustar as coordenadas de cada linha no PDF
   const salvarDados = () => {
     if (!validarEntradas()) return;
     const confirmar = window.confirm("Deseja realmente salvar os dados?");
     if (confirmar) {
       const doc = new jsPDF();
-  
+
       // Adicionar título
       doc.setFontSize(12);
       doc.text("Informações do Cliente", 10, 20);
-  
+
       // Adicionar dados principais
       doc.setFontSize(10);
       doc.text(`Nome: ${nomeCliente}`, 10, 30);
       doc.text(`Telefone: ${telefoneCliente}`, 10, 36);
       doc.text(`Tipo de Produto: ${tipoProduto}`, 10, 42);
-  
+
       // Adicionar pesos com alinhamento
       doc.text("Pesos:", 10, 50);
       pesos.forEach((peso, index) => {
         doc.text(`Peso ${index + 1} (KG):`, 10, 56 + index * 6); // Coluna 1
         doc.text(`${peso.toFixed(2).replace(".", ",")}`, 50, 56 + index * 6); // Coluna 2
       });
-  
+
       // Adicionar total
       doc.text(`Total (KG): ${somaPesos.toFixed(2).replace(".", ",")}`, 10, 56 + pesos.length * 6 + 6);
-  
+
       // Adicionar rodapé
       doc.text("Todos os direitos reservados.", 10, 120);
       doc.text("ADILSON CAFÉ & COMPANHIA LTDA", 10, 126);
       doc.text("33 8763-1216", 10, 132);
       doc.text("ATENÇÃO: Esta guia não possui valor fiscal ou legal. Ela é apenas informativa e contém os pesos dos produtos para conferência do cliente.", 10, 138, { maxWidth: 190 });
-  
+
       // Salvar o PDF
       doc.save(`${nomeCliente}_salvo.pdf`);
       alert("Dados salvos com sucesso!");
@@ -105,7 +105,7 @@ export default function Home() {
     }
   };
 
-   // UseEffect para limpar os campos quando `limparCampos` for ativado
+  // UseEffect para limpar os campos quando `limparCampos` for ativado
   useEffect(() => {
     if (limparCampos) {
       setNomeCliente("");
@@ -119,7 +119,7 @@ export default function Home() {
       setLimparCampos(false); // Resetar o estado de limpeza
     }
   }, [limparCampos]);
-  
+
 
   const gerarConteudo = () => {
     return `
@@ -136,16 +136,16 @@ export default function Home() {
         </thead>
         <tbody>
           ${pesos
-            .map(
-              (peso) => `<tr><td>${peso.toFixed(2).replace(".", ",")}</td></tr>`
-            )
-            .join("")}
+        .map(
+          (peso) => `<tr><td>${peso.toFixed(2).replace(".", ",")}</td></tr>`
+        )
+        .join("")}
         </tbody>
         <tfoot>
           <tr>
             <td><strong>Total (KG):</strong> ${somaPesos
-              .toFixed(2)
-              .replace(".", ",")}</td>
+        .toFixed(2)
+        .replace(".", ",")}</td>
           </tr>
         </tfoot>
       </table>
@@ -176,7 +176,7 @@ export default function Home() {
   const somaPesos = pesos.reduce((acc, peso) => acc + peso, 0);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-slate-200 p-6">
       <div className="flex justify-center py-4 bg-gray-800">
         <h1 className="text-3xl font-bold text-white">ADILSON CAFÉ</h1>
       </div>
@@ -195,7 +195,7 @@ export default function Home() {
             placeholder="Digite o nome do cliente"
             value={nomeCliente}
             onChange={(e) => setNomeCliente(e.target.value)}
-            className="block w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 mb-4"
+            className="block w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 mb-4 placeholder-gray-500"
           />
           <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
             Telefone:
@@ -207,7 +207,7 @@ export default function Home() {
             placeholder="Digite o telefone do cliente"
             value={telefoneCliente}
             onChange={(e) => setTelefoneCliente(e.target.value)}
-            className="block w-full border border-gray-300 rounded-lg px-3 py-2 mt-1"
+            className="block w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 placeholder-gray-500"
           />
         </fieldset>
 
@@ -233,32 +233,32 @@ export default function Home() {
 
       <div className="bg-white shadow-md rounded-lg p-6 mt-6 max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold mb-4">Controle</h2>
-        <div className="flex items-center space-x-4 mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0 mb-6">
           <input
             type="text"
             placeholder="Digite o peso (KG)"
             value={novoPeso}
             onChange={(e) => setNovoPeso(e.target.value)}
-            className="flex-1 border border-gray-300 rounded-lg px-3 py-2"
+            className="w-full sm:flex-1 border border-gray-300 rounded-lg px-3 py-2 placeholder-gray-500"
           />
           <button
             onClick={adicionarPeso}
-            className="px-4 py-2 bg-green-500 flex items-center gap-2 text-white rounded-lg shadow hover:bg-green-600"
+            className="w-full sm:w-auto px-4 py-2 bg-green-500 flex justify-center text-center items-center gap-2 text-white rounded-lg shadow hover:bg-green-600"
           >
-          <IoIosAddCircleOutline/> Adicionar
+            <IoIosAddCircleOutline /> Adicionar
           </button>
         </div>
 
-        <table className="table-auto w-full border-collapse border border-gray-300 text-left">
+        <table className="table-auto w-full border-collapse border border-gray-300 text-left sm:text-black sm:bg-white">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-gray-100 sm:bg-white sm:text-black">
               <th className="border border-gray-300 px-4 py-2">Peso (KG)</th>
               <th className="border border-gray-300 px-4 py-2">Ações</th>
             </tr>
           </thead>
           <tbody>
             {pesos.map((peso, index) => (
-              <tr key={index} className="hover:bg-gray-50">
+              <tr key={index} className="hover:bg-gray-50 sm:bg-white sm:text-black">
                 <td className="border border-gray-300 px-4 py-2">
                   {editandoIndex === index ? (
                     <input
@@ -308,7 +308,7 @@ export default function Home() {
             ))}
           </tbody>
           <tfoot>
-            <tr className="bg-gray-100">
+            <tr className="bg-gray-100 sm:bg-white sm:text-black">
               <td className="border border-gray-300 px-4 py-2 font-bold">Total (KG)</td>
               <td className="border border-gray-300 px-4 py-2">{somaPesos.toFixed(2)}</td>
             </tr>
@@ -333,5 +333,6 @@ export default function Home() {
         </div>
       </div>
     </div>
+
   );
 }
