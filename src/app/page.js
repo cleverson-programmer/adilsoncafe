@@ -184,7 +184,7 @@ export default function Home() {
       <form className="bg-white shadow-md rounded-lg p-6 mt-6 max-w-xl mx-auto">
         {erro && <div className="text-red-500 mb-4">{erro}</div>}
         <fieldset className="mb-4">
-          <legend className="text-lg font-bold mb-2">Informações do cliente:</legend>
+          <legend className="text-lg text-black font-bold mb-2">Informações do cliente:</legend>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
             Nome:
           </label>
@@ -223,7 +223,7 @@ export default function Home() {
             onChange={(e) => setTipoProduto(e.target.value)}
             className="block w-full bg-white border border-gray-300 rounded-lg px-3 py-2 mt-1"
           >
-            <option value="">Selecione</option>
+            <option value="" className="text-black">Selecione</option>
             <option value="Café seco">Café seco</option>
             <option value="Café maduro">Café maduro</option>
             <option value="Café limpo">Café limpo</option>
@@ -233,7 +233,7 @@ export default function Home() {
 
       <div className="bg-white shadow-md rounded-lg p-6 mt-6 max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold text-black mb-4">Controle</h2>
-        <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0 mb-6">
+        <div className=" text-black flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-4 sm:space-y-0 mb-6">
           <input
             type="text"
             placeholder="Digite o peso (KG)"
@@ -258,7 +258,7 @@ export default function Home() {
           </thead>
           <tbody>
             {pesos.map((peso, index) => (
-              <tr key={index} className="hover:bg-gray-50">
+              <tr key={index}>
                 <td className="border border-gray-300 px-4 py-2">
                   {editandoIndex === index ? (
                     <input
